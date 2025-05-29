@@ -1,0 +1,98 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <button mat-icon-button (click)="toggleMenu()" class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <a mat-button routerLink="/" class="logo">
+    Task Manager
+  </a>
+
+  <span class="spacer"></span>
+
+  <div class="desktop-menu" *ngIf="currentUser">
+    <a mat-button routerLink="/dashboard" [class.active]="isActive('/dashboard')">
+      Dashboard
+    </a>
+    <a mat-button routerLink="/tasks" [class.active]="isActive('/tasks')">
+      My Tasks
+    </a>
+    <a mat-button routerLink="/projects" [class.active]="isActive('/projects')">
+      Projects
+    </a>
+  </div>
+
+  <div class="user-menu" *ngIf="currentUser">
+    <button mat-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+      <span class="user-name">{{ currentUser.name }}</span>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+
+  <div class="auth-buttons" *ngIf="!currentUser">
+    <a mat-button routerLink="/login" [class.active]="isActive('/login')">
+      Login
+    </a>
+    <a mat-button routerLink="/register" class="register-button" [class.active]="isActive('/register')">
+      Register
+    </a>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="mobile-menu" *ngIf="isMenuOpen">
+  <mat-sidenav mode="side" opened>
+    <div class="mobile-nav-content">
+      <a 
+        mat-button 
+        *ngIf="currentUser"
+        routerLink="/dashboard" 
+        (click)="toggleMenu()"
+        [class.active]="isActive('/dashboard')">
+        Dashboard
+      </a>
+      <a 
+        mat-button 
+        *ngIf="currentUser"
+        routerLink="/tasks" 
+        (click)="toggleMenu()"
+        [class.active]="isActive('/tasks')">
+        My Tasks
+      </a>
+      <a 
+        mat-button 
+        *ngIf="currentUser"
+        routerLink="/projects" 
+        (click)="toggleMenu()"
+        [class.active]="isActive('/projects')">
+        Projects
+      </a>
+      <div class="mobile-auth-buttons" *ngIf="!currentUser">
+        <a 
+          mat-button 
+          routerLink="/login" 
+          (click)="toggleMenu()"
+          [class.active]="isActive('/login')">
+          Login
+        </a>
+        <a 
+          mat-button 
+          routerLink="/register" 
+          (click)="toggleMenu()"
+          class="register-button"
+          [class.active]="isActive('/register')">
+          Register
+        </a>
+      </div>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

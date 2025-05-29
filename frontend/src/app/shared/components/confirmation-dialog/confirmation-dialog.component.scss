@@ -1,0 +1,53 @@
+h2 {
+  margin: 0 0 16px;
+  color: #212121;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+p {
+  margin: 0;
+  color: #616161;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.mat-dialog-actions {
+  padding: 16px 24px;
+  margin: 0 -24px -24px -24px;
+  justify-content: flex-end;
+  
+  button {
+    margin-left: 8px;
+    min-width: 80px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    
+    &[mat-button] {
+      color: #616161;
+      
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+    }
+    
+    &[color='primary'] {
+      background-color: #3f51b5;
+      color: white;
+      
+      &:hover {
+        background-color: #303f9f;
+      }
+    }
+    
+    &[color='warn'] {
+      background-color: #f44336;
+      color: white;
+      
+      &:hover {
+        background-color: #d32f2f;
+      }
+    }
+  }
+}

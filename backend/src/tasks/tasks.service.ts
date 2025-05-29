@@ -112,4 +112,22 @@ export class TasksService {
       completionRate,
     };
   }
+
+  /**
+   * Updates the status of a task
+   * @param id The ID of the task to update
+   * @param status The new status for the task
+   * @returns The updated task
+   */
+  async updateStatus(id: string, status: TaskStatus): Promise<Task> {
+    // Validate the status is a valid TaskStatus
+    if (!Object.values(TaskStatus).includes(status)) {
+      throw new Error(`Invalid status: ${status}`);
+    }
+
+    const task = await this.findOne(id);
+    task.status = status;
+    
+    return this.tasksRepository.save(task);
+  }
 } 

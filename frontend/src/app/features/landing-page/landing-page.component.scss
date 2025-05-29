@@ -1,0 +1,147 @@
+@import "@angular/material/theming";
+@import "../../../theme.scss";
+
+.landing-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  background: linear-gradient(
+    135deg,
+    mat-color($primary) 0%,
+    mat-color($accent) 100%
+  );
+  color: white;
+  padding: 6rem 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+
+    .cta-button {
+      font-size: 1.1rem;
+      padding: 0.5rem 2rem;
+    }
+
+    .secondary-button {
+      color: white;
+      border: 2px solid white;
+      padding: 0.5rem 2rem;
+    }
+  }
+}
+
+.features {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .feature-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    mat-icon {
+      font-size: 3rem;
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 1.5rem;
+      color: mat-color($primary);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1.5rem;
+    min-height: 70vh;
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+    }
+  }
+
+  .features {
+    padding: 3rem 1.5rem;
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+}
